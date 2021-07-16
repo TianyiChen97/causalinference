@@ -147,7 +147,7 @@ for (i in 1:ncol(finala)) {
 ###remove three constant variable
 finala=finala[,-which(colnames(finala) %in% c('DALY min','QALY min','QOLS max') )]
 
-##remove perfect linearity 
+##remove perfect linearity and too high correlated variables, this is for further deconfounder analysis
 corrf=as.data.frame(cor(finala))
 colname=as.data.frame(sort(table(which(abs(corrf)>.99,arr.ind = T)[,2]),decreasing = T))
 
